@@ -33,3 +33,14 @@ class CreateUserInteractionSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserInteraction
         fields = ['user', 'product', 'interaction_type', 'rating']
+        
+
+class RecommendationResponseSerializer(serializers.Serializer):
+    """Serializer for recommendation responses"""
+    product_id = serializers.IntegerField()
+    product_name = serializers.CharField()
+    score = serializers.FloatField()
+    
+    # Additional fields we'll add later
+    category = serializers.CharField(required=False)
+    price = serializers.DecimalField(max_digits=10, decimal_places=2, required=False)
